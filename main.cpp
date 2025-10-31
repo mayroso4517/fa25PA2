@@ -31,6 +31,13 @@ int main() {
     // Step 2: Create leaf nodes for each character with nonzero frequency
     int nextFree = createLeafNodes(freq);
 
+    for (int i = 0; i < 26; ++i) { //Loops through the alphabet to determine how many letters are in the input
+        if (freq[i] > 0)
+            cout << char('a' + i) << ":" << freq[i] << "\n";
+
+    }
+
+
     // Step 3: Build encoding tree using your heap
     int root = buildEncodingTree(nextFree);
 
