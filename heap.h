@@ -14,6 +14,13 @@ struct MinHeap {
 
     MinHeap() { size = 0; }
 
+    int top() {
+        if (size == 0)
+            return -1;
+        return data[0];
+    }
+
+
     void push(int idx, int weightArr[]) {
         // TODO: insert index at end of heap, restore order using upheap()
     }
