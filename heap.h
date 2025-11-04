@@ -12,9 +12,9 @@ struct MinHeap {
     int data[64];
     int size;
 
-    MinHeap() { size = 0; }
+    MinHeap() { size = 0; } //Constructor to keep heap empty
 
-    int top() {
+    int top() { //Returns the smallest element
         if (size == 0)
             return -1;
         return data[0];
@@ -22,7 +22,7 @@ struct MinHeap {
 
 
     void push(int idx, int weightArr[]) {
-        data[size] = idx;
+        data[size] = idx; // Puts the new node at the end of the heap
         upheap(size, weightArr);
         size++;
     }
@@ -50,7 +50,7 @@ struct MinHeap {
             data[parent] = tmp;
             pos = parent;
         } else {
-
+            break;
         }
       }
 
