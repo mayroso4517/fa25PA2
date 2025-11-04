@@ -22,21 +22,62 @@ struct MinHeap {
 
 
     void push(int idx, int weightArr[]) {
-        // TODO: insert index at end of heap, restore order using upheap()
+        data[size] = idx;
+        upheap(size, weightArr);
+        size++;
     }
 
     int pop(int weightArr[]) {
-        // TODO: remove and return smallest index
-        // Replace root with last element, then call downheap()
-        return -1; // placeholder
+      if (size == 0)
+          return -1;
+
+        int smallest = data[0]; // Stores smallest node
+        size--;
+        if (size > 0) {
+            data[0] = data[size];
+            downheap(0, weightArr);
+        }
+        return smallest;
     }
 
-    void upheap(int pos, int weightArr[]) {
-        // TODO: swap child upward while smaller than parent
+    void upheap(int pos, int weightArr[]) { //Moves the smallest frequency to the top
+
+    while (pos > 0) {
+        int parent = (pos -1)/ 2; //Uses heap formula to find parent
+        if (weightArr[data[pos]] < weightArr[data[parent]]) {
+            int tmp = data[pos];
+            data[pos] = data[parent];
+            data[parent] = tmp;
+            pos = parent;
+        } else {
+
+        }
+      }
+
     }
 
     void downheap(int pos, int weightArr[]) {
-        // TODO: swap parent downward while larger than any child
+        while (true) {
+            int left = 2 * pos + 1;
+            int right = 2 * pos + 2;
+            int smallest = pos;
+
+            //Compares the left and right child
+            if (left < size && weightArr[data[left]] < weightArr[data[smallest]]) {
+                smallest = left;
+            }
+            if (right < size && weightArr[data[right]] < weightArr[data[smallest]]) {
+                smallest = right;
+            } //Will perform a swap
+            if (smallest != pos) {
+                int tmp = data[pos];
+                data[pos] = data[smallest];
+                data[smallest] = tmp;
+                pos = smallest;
+            } else {
+                break;
+            }
+        }
     }
 };
 
